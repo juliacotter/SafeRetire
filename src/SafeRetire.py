@@ -1,9 +1,23 @@
 from tkinter import *
 
 class Application(Frame):
-    def __init__(self, master=None):
-        super().__init__(master)
-        self.master = master
+  def __init__(self, master=None):
+    super().__init__(master)
+    self.master = master
+    self.init_window()
+
+  def init_window(self):
+    # changing the title of our master widget      
+    self.master.title("Safe Retire Calculator")
+
+    Label(self.master, text="Enter your age").grid(row=0)
+    ageEntry = Entry(self.master).grid(row=0, column=1)
+
+    Label(self.master, text="Enter your salary"). grid(row=1)
+    initialSalaryEntry = Entry(self.master).grid(row=1, column=1)
+
+    Label(self.master, text="Enter your initial savings").grid(row=2)
+    housingExpenseYrlyEntry = Entry(self.master).grid(row=2, column=1)
 
 class SafeRetire:
   def __init__(self, age, initialSalary, savingsInit, housingExpenseYrly, monthlyExpensesYrly, extraIncome, retirementAge, investPreference, initialInvestments):
@@ -54,12 +68,11 @@ class SafeRetire:
 
 root = Tk()
 app = Application(root)
+
+root.geometry("400x300")
 root.mainloop()
 
 #inputs
-age = input("Enter your age: ")
-salary = input("Enter your salary: ")
-savings = input("Enter your initial savings: ")
 investmentsBool = input("Do you have any investments? (Y/ N)")
 if(investmentsBool == 'Y' or investmentsBool == 'y'):
   investmentsBool = True
